@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REST API UI</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 15px 20px;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .user-info {
+            margin-bottom: 20px;
+            padding: 10px;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+        }
+        .user-info p {
+            margin: 5px 0;
+            font-size: 1em;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>REST API Interface</h1>
+        <p>Simple REST API by Rafael</p>
+    </header>
+    <div class="container">
+        <!-- User Info -->
+        <div class="user-info">
+            <h3>User Information</h3>
+            <p><strong>API Key:</strong> <span id="user-apikey">Loading...</span></p>
+            <p><strong>Status:</strong> <span id="user-status">Loading...</span></p>
+        </div>
+    </div>
+
+
+        
+        <!-- API Endpoints -->
+        <h2>Endpoints</h2>
+        <ul class="api-list">
+            <li class="api-item">
+                <h4>GET /api/tiktok</h4>
+                <p>Download video TikTok</p>
+                <button onclick="navigateTo('/api/tiktok?apikey=yourkey&url=url')">Try it out</button>
+            </li>
+            <li class="api-item">
+                <h4>GET /api/orkut/createpayment</h4>
+                <p>Create QRIS Payment</p>
+                <button onclick="navigateTo('/api/orkut/createpayment?apikey=yourkey&amount=&codeqr=')">Try it out</button>
+            </li>
+            <li class="api-item">
+                <h4>GET /api/orkut/cekstatus</h4>
+                <p>Check QRIS Payment Status</p>
+                <button onclick="navigateTo('/api/orkut/cekstatus?apikey=yourkey&merchant=&keyorkut=')">Try it out</button>
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        // Ambil data dari session storage
+        const apikey = sessionStorage.getItem("userApikey");
+        const status = sessionStorage.getItem("userStatus");
+
+        // Tampilkan data ke UI
+        document.getElementById("user-apikey").textContent = apikey || "Not logged in";
+        document.getElementById("user-status").textContent = status || "Unknown";
+    </script>
+</body>
+</html>
